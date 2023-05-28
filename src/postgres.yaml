@@ -1,0 +1,27 @@
+apiVersion: platform.hsdp.io/v1alpha1
+kind: SQLInstance
+metadata:
+  name: springdemo-postgres
+  namespace: default
+spec:
+  parameters:
+    engine: postgres
+    engineVersion: "14.5"
+    storageGB: 10
+    passwordSecretRef:
+      namespace: default
+      name: springdemo-psqlsecret
+      key: password
+  writeConnectionSecretToRef:
+    name: springdemo-postgres-connection
+
+# password: ChangeMeBeforeActualUse Change the password before deploying to your cluster
+---
+apiVersion: v1
+data:
+  password: Q2hhbmdlTWVCZWZvcmVBY3R1YWxVc2U=
+kind: Secret
+metadata:
+  name: springdemo-psqlsecret
+  namespace: default
+type: Opaque

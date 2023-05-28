@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: demo-app
+  name: springboot-app-db
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: demo-app
+      app: springboot-app-db
   template:
     metadata:
       labels:
-        app: demo-app
+        app: springboot-app-db
     spec:
       containers:
-        - name: demo-app
-          image: <your-docker-image>
+        - name: springboot-app-db
+          image: rajshivaram7/springboot-app-db
           ports:
-            - containerPort: 8080
+            - containerPort: 9090
           env:
             - name: SPRING_DATASOURCE_URL
               valueFrom:
