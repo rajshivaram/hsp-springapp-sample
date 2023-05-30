@@ -5,11 +5,10 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @NoArgsConstructor
-@Table(name = "users")
+@Table(name = "hsdp")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
 
     private Long id;
     private String name;
