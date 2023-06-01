@@ -20,7 +20,6 @@ public class DatabaseConfig {
     @Value("${spring.datasource.password}")
     private String password;
 
-    @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.postgresql.Driver");
