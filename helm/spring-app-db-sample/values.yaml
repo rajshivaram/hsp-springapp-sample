@@ -1,0 +1,14 @@
+replicaCount: 1
+
+image:
+  name: rajshivaram7/springboot-app-db
+  tag: "latest"
+
+service:
+  port: 9092
+
+postgres:
+  engine: postgres
+  engineVersion: "14.5"
+  storageGB: 10
+  secretName: spring-postgres-connection

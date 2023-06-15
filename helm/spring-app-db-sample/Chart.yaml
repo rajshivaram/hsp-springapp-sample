@@ -1,0 +1,9 @@
+apiVersion: v1
+name: spring-app-db-sample
+description: A Helm chart that deploys sample springboot application with postgres leveraging compositions
+type: application
+version: 1.0.0
+appVersion: "1.0.0"
+maintainers:
+- email: raj.shivaram@philips.com
+  name: Raj Shivaram

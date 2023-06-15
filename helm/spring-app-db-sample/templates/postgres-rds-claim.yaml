@@ -1,0 +1,30 @@
+apiVersion: platform.hsdp.io/v1alpha1
+kind: RDSInstance
+metadata:
+  name: rds4restore
+  namespace: default
+spec:
+  settings:
+    instanceClass: db.t4g.micro
+    engine: {{ .Values.postgres.engine }}
+    engineVersion: "14.5"
+    dbName: users
+    storageGB: {{ .Values.postgres.storageGB }}
+    passwordSecretRef:
+      namespace: default
+      name: rds4restore-psqlsecret
+      key: password
+  resourceConfig:
+    deletionPolicy: Delete
+  writeConnectionSecretToRef:
+    name: {{ .Values.postgres.secretName }}
+---
+# Note: Change the password before actual use
+apiVersion: v1
+data:
+  password: Q2hhbmdlTWVCZWZvcmVBY3R1YWxVc2U=
+kind: Secret
+metadata:
+  name: {{ .Values.postgres.secretName }}
+  namespace: default
+type: Opaque
